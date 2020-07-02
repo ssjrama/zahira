@@ -19,14 +19,17 @@
                 <a href="#!" class="menu-toggle">
                     <i class="fas fa-bars"></i>
                 </a>
-                <a href="/admin" class="spur-logo"><i class="fas fa-user"></i> <span>Admin</span></a>
+                <a href="/admin" class="spur-logo"><i class="fas fa-user"></i> <span>Toko Zahira</span></a>
             </header>
             <nav class="dash-nav-list">
-                <a href="/admin" class="dash-nav-item">
-                    <i class="fas fa-home"></i> Dashboard </a>
+                {{-- <a href="/admin" class="dash-nav-item">
+                    <i class="fas fa-home"></i> Dashboard </a> --}}
                 <a href="/barang" class="dash-nav-item">
                     <i class="fas fa-box"></i> Barang </a>
-                
+                <a href="/supplier" class="dash-nav-item">
+                    <i class="fas fa-user-circle"></i> Supplier </a>
+                <a href="/keuangan" class="dash-nav-item">
+                    <i class="fas fa-money-bill"></i> Keuangan </a>
                 <div class="dash-nav-dropdown">
                     <a href="#!" class="dash-nav-item dash-nav-dropdown-toggle">
                         <i class="fas fa-info"></i> About </a>
@@ -42,24 +45,32 @@
                 <a href="#!" class="menu-toggle">
                     <i class="fas fa-bars"></i>
                 </a>
-                <a href="#!" class="searchbox-toggle">
+                {{-- <a href="#!" class="searchbox-toggle">
                     <i class="fas fa-search"></i>
                 </a>
                 <form class="searchbox" action="#!">
                     <a href="#!" class="searchbox-toggle"> <i class="fas fa-arrow-left"></i> </a>
                     <button type="submit" class="searchbox-submit"> <i class="fas fa-search"></i> </button>
                     <input type="text" class="searchbox-input" placeholder="type to search">
-                </form>
+                </form> --}}
                 <div class="tools">
-                    <a href="#!" class="tools-item">
+                    {{-- <a href="#!" class="tools-item">
                         <i class="fas fa-bell"></i>
-                    </a>
+                    </a> --}}
                     <div class="dropdown tools-item">
                         <a href="#" class="" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-user"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                            <a class="dropdown-item" href="#">Logout</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
                         </div>
                     </div>
                 </div>

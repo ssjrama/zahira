@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Barang;
+use App\Supplier;
 use Illuminate\Support\Facades\Storage;
 
 class BarangController extends Controller
@@ -26,7 +27,8 @@ class BarangController extends Controller
      */
     public function create()
     {
-        return view('admin.barang.create');
+        $supplier = Supplier::all();
+        return view('admin.barang.create')->with('supplier', $supplier);
     }
 
     /**
@@ -39,7 +41,9 @@ class BarangController extends Controller
     {
         $this->validate($request,[
             'nama' => 'required',
-            'harga' => 'required',
+            'id_supplier' => 'required',
+            'harga_jual' => 'required',
+            'harga_beli' => 'required',
             'stok' => 'required',
             'deskripsi' => 'nullable',
             'image' => 'image|nullable'
@@ -59,9 +63,12 @@ class BarangController extends Controller
 
         $barang = new Barang();
         $barang->nama = $request->input('nama');
-        $barang->harga = $request->input('harga');
+        $barang->id_supplier = $request->input('id_supplier');
+        $barang->harga_jual = $request->input('harga_jual');
+        $barang->harga_beli = $request->input('harga_beli');
         $barang->stok = $request->input('stok');
         $barang->deskripsi = $request->input('deskripsi');
+        $barang->status = 'Ready';
         $barang->image = $fileNameToStore;
         $barang->save();
 
@@ -88,9 +95,11 @@ class BarangController extends Controller
      */
     public function edit($id)
     {
+        $supplier = Supplier::all();
         $barang = Barang::findOrFail($id);
         return view('admin.barang.edit', [
-            'barang' => $barang
+            'barang' => $barang,
+            'supplier' => $supplier
         ]);
     }
 
@@ -105,7 +114,9 @@ class BarangController extends Controller
     {
         $this->validate($request,[
             'nama' => 'required',
-            'harga' => 'required',
+            'id_supplier' => 'required',
+            'harga_jual' => 'required',
+            'harga_beli' => 'required',
             'stok' => 'required',
             'deskripsi' => 'nullable',
             'image' => 'image|nullable'
@@ -125,9 +136,12 @@ class BarangController extends Controller
 
         $barang = Barang::findOrFail($id);
         $barang->nama = $request->input('nama');
-        $barang->harga = $request->input('harga');
+        $barang->id_supplier = $request->input('id_supplier');
+        $barang->harga_jual = $request->input('harga_jual');
+        $barang->harga_beli = $request->input('harga_beli');
         $barang->stok = $request->input('stok');
         $barang->deskripsi = $request->input('deskripsi');
+        $barang->status = 'Ready';
         $barang->image = $fileNameToStore;
         $barang->save();
 

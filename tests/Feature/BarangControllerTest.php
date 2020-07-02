@@ -16,12 +16,12 @@ class BarangControllerTest extends TestCase
      *
      * @return void
      */
-    public function testExample()
-    {
-        $response = $this->get('/');
+    // public function testExample()
+    // {
+    //     $response = $this->get('/');
 
-        $response->assertStatus(200);
-    }
+    //     $response->assertStatus(200);
+    // }
 
     public function test_store(){
         $barang = Barang::create([

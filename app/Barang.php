@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Barang extends Model
 {
-    protected $fillable = ['nama', 'harga', 'stok', 'deskripsi', 'image'];
+    public function supplier(){
+        return $this->hasOne('App\Supplier', 'id', 'id_supplier');
+    }
 }

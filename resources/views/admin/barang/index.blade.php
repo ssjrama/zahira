@@ -7,8 +7,10 @@
             <table class="table table-striped">
                 <tr>
                     <th>Nama</th>
-                    <th>Harga</th>
+                    <th>Harga Jual</th>
+                    <th>Harga Beli</th>
                     <th>Stok</th>
+                    <th>Status</th>
                     <th>Image</th>
                     <th></th>
                     <th></th>
@@ -16,8 +18,10 @@
             @foreach ($barang as $b)
                 <tr>
                     <td>{{$b->nama}}</td>
-                    <td>{{$b->harga}}</td>
+                    <td>{{$b->harga_jual}}</td>
+                    <td>{{$b->harga_beli}}</td>
                     <td>{{$b->stok}}</td>
+                    <td>{{$b->status}}</td>
                     <td><img class="img-fluid h-25" src="/storage/images/{{$b->image}}" alt="image"></td>
                     <td><a href="/barang/{{$b->id}}/edit" class="btn btn-success">Edit</a></td>
                     <td>

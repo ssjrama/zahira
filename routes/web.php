@@ -17,10 +17,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes([
+    'register' => false
+]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index');
 Route::get('/admin', function(){
-    return view('admin.index');
+    // return view('admin.index');
+    return redirect('/barang');
 })->name('home');
 Route::resource('/barang', 'BarangController');
+Route::resource('/keuangan', 'KeuanganController');
+Route::resource('/supplier', 'SupplierController');
