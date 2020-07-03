@@ -26,6 +26,6 @@ Route::get('/admin', function(){
     // return view('admin.index');
     return redirect('/barang');
 })->name('home');
-Route::resource('/barang', 'BarangController');
-Route::resource('/keuangan', 'KeuanganController');
-Route::resource('/supplier', 'SupplierController');
+Route::resource('/barang', 'BarangController')->middleware('auth');
+Route::resource('/keuangan', 'KeuanganController')->middleware('auth');
+Route::resource('/supplier', 'SupplierController')->middleware('auth');

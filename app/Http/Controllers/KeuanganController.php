@@ -44,7 +44,7 @@ class KeuanganController extends Controller
         $keuangan = new Keuangan();
         $keuangan->pemasukan = $request->input('pemasukan');
         $keuangan->pengeluaran = $request->input('pengeluaran');
-        $keuangan->keuntungan = $keuangan->pengeluaran - $keuangan->pemasukan;
+        $keuangan->keuntungan = $keuangan->pemasukan - $keuangan->pengeluaran;
         $keuangan->save();
 
         return redirect('/keuangan')->with('success', 'Data keuangan baru ditambahkan');
@@ -90,7 +90,7 @@ class KeuanganController extends Controller
         $keuangan = Keuangan::findOrFail($id);
         $keuangan->pemasukan = $request->input('pemasukan');
         $keuangan->pengeluaran = $request->input('pengeluaran');
-        $keuangan->keuntungan = $keuangan->pengeluaran - $keuangan->pemasukan;
+        $keuangan->keuntungan = $keuangan->pemasukan - $keuangan->pengeluaran;
         $keuangan->save();
 
         return redirect('/keuangan')->with('success', 'Data keuangan berhasil dirubah');

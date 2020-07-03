@@ -26,17 +26,23 @@ class BarangControllerTest extends TestCase
     public function test_store(){
         $barang = Barang::create([
             'nama' => 'Coba',
-            'harga' => 2000,
+            'id_supplier' => 1,
+            'harga_jual' => 2000,
+            'harga_beli' => 1000,
             'stok' => 21,
             'deskripsi' => 'test test',
+            'status' => 'test',
             'image' => 'image.jpg'
         ]);
 
         $this->assertDatabaseHas('barangs', [
             'nama' => 'Coba',
-            'harga' => 2000,
+            'id_supplier' => 1,
+            'harga_jual' => 2000,
+            'harga_beli' => 1000,
             'stok' => 21,
             'deskripsi' => 'test test',
+            'status' => 'test',
             'image' => 'image.jpg'
         ]);	
     }
@@ -51,26 +57,34 @@ class BarangControllerTest extends TestCase
     public function test_update(){
         $barang = Barang::create([
             'nama' => 'Coba',
-            'harga' => 2000,
+            'id_supplier' => 1,
+            'harga_jual' => 2000,
+            'harga_beli' => 1000,
             'stok' => 21,
             'deskripsi' => 'test test',
+            'status' => 'test',
             'image' => 'image.jpg'
         ]);
 
         $barang = Barang::find(1);
-        $barang->nama = 'Coba 1';  
-        $barang->harga = 4000;  
-        $barang->stok = 40;  
-        $barang->deskripsi = 'Testing';
-        $barang->image = 'Test';
+        $barang->nama = 'Cobi';
+        $barang->id_supplier = 1;
+        $barang->harga_jual = 2000;
+        $barang->harga_beli = 1000;
+        $barang->stok = 21;
+        $barang->deskripsi = 'test test';
+        $barang->status = 'test';
         $barang->save();
 
         $this->assertDatabaseHas('barangs', [
-            'nama' => 'Coba 1',
-            'harga' => 4000,
-            'stok' => 40,
-            'deskripsi' => 'Testing',
-            'image' => 'Test'
+            'nama' => 'Cobi',
+            'id_supplier' => 1,
+            'harga_jual' => 2000,
+            'harga_beli' => 1000,
+            'stok' => 21,
+            'deskripsi' => 'test test',
+            'status' => 'test',
+            'image' => 'image.jpg'
         ]);	
     }
 }
